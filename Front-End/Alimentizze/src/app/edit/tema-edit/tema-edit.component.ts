@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class TemaEditComponent implements OnInit {
   tema: Tema = new Tema()
+  alertas: any;
 
   constructor(
     private temaService: TemaService,
@@ -35,7 +36,7 @@ export class TemaEditComponent implements OnInit {
   atualizar(){
     this.temaService.putTema(this.tema).subscribe((resp: Tema)=>{
       this.tema = resp
-      alert('Tema atualizado com sucesso!')
+      this.alertas.showAlertInfo('Tema atualizado com sucesso!')
       this.router.navigate(['/tema'])
     })
   }

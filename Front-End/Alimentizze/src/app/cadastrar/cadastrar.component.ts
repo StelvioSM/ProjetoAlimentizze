@@ -16,6 +16,7 @@ export class CadastrarComponent implements OnInit {
   confirmarSenha: string
 
   tipoDeUsuario: string
+  alertas: any;
 
   constructor(
     private authService: AuthService,
@@ -29,7 +30,7 @@ export class CadastrarComponent implements OnInit {
 
   selecionarRadio(select: string){
     this.tipoDeUsuario = select;
-    alert("~select usuario "+this.tipoDeUsuario);
+    this.alertas.showAlertInfo("~select usuario "+this.tipoDeUsuario);
   }
 
   confirmSenha(event: any) {
@@ -47,14 +48,14 @@ export class CadastrarComponent implements OnInit {
     
     
     if (this.usuario.senha != this.confirmarSenha) {
-      alert("A senha está incorreta.")
+      this.alertas.showAlertInfo("A senha está incorreta.")
     }
     else {
       this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp
         console.log(JSON.stringify(resp))
         this.router.navigate(["/entrar"])
-        alert("Usuário cadastrado com sucesso!")
+        this.alertas.showAlertSuccess("Usuário cadastrado com sucesso!")
       })
     }
 

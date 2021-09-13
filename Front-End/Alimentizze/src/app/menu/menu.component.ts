@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment.prod';
 export class MenuComponent implements OnInit {
   nomeCompleto = environment.nomeCompleto
   id = environment.id
+  alertas: any;
   constructor(
     private router: Router
 
@@ -20,7 +21,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
 
     if (environment.token == "") {
-      alert('Sua seção expirou, faça o login novamente.')
+      this.alertas.showAlertInfo('Sua seção expirou, faça o login novamente.')
       this.router.navigate(['/entrar'])
     }
     

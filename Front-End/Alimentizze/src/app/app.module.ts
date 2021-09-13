@@ -18,6 +18,8 @@ import { TemaDeleteComponent } from './delete/tema-delete/tema-delete.component'
 import { PostagemEditComponent } from './edit/postagem-edit/postagem-edit.component';
 import { PostagemDeleteComponent } from './delete/postagem-delete/postagem-delete.component';
 import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.component';
+import { AlertasComponent } from './alertas/alertas.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -34,14 +36,16 @@ import { MinhasPostagensComponent } from './minhas-postagens/minhas-postagens.co
     TemaDeleteComponent,
     PostagemEditComponent,
     PostagemDeleteComponent,
-    MinhasPostagensComponent
+    MinhasPostagensComponent,
+    AlertasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    ModalModule.forRoot()
   ],
   providers: [{
     provide: LocationStrategy,

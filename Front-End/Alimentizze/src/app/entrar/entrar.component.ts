@@ -13,6 +13,7 @@ import { AuthService } from '../service/auth.service';
 export class EntrarComponent implements OnInit {
 
   usuarioDTO: UsuarioDTO = new UsuarioDTO()
+  alertas: any;
 
   constructor(
   private auth: AuthService,
@@ -56,10 +57,10 @@ entrar(){
 
   }, erro => {
     if(erro.status == 500){
-      alert("Usuário ou senha estão incorretos!")
+      this.alertas.showAlertDanger("Usuário ou senha estão incorretos!")
     }
     if(erro.status == 400){
-      alert("Usuário ou senha estão incorretos!")
+      this.alertas.showAlertInfo("Usuário ou senha estão incorretos!")
     }
   })
 } 

@@ -17,6 +17,7 @@ export class PostagemEditComponent implements OnInit {
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number
+  alertas: any;
 
   constructor(
     private router: Router,
@@ -63,7 +64,7 @@ export class PostagemEditComponent implements OnInit {
     console.log("postagem "+JSON.stringify(this.postagem))
     this.postagemService.putPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
-      alert('Postagem atualizada com sucesso!')
+      this.alertas.showAlertSuccess('Postagem atualizada com sucesso!')
       this.router.navigate(['/home'])
     })
   }

@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment.prod';
 export class PostagemDeleteComponent implements OnInit {
   postagem: Postagem = new Postagem()
   idPost: number
+  alertas: any;
 
   constructor(
     private router: Router,
@@ -41,7 +42,7 @@ export class PostagemDeleteComponent implements OnInit {
 
   apagar(){
     this.postagemService.deletePostagem(this.idPost).subscribe(()=>{
-      alert('Postagem apagada com sucesso!')
+      this.alertas.showAlertSuccess('Postagem apagada com sucesso!')
       this.router.navigate(['/home'])
     })
   }

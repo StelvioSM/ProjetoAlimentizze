@@ -13,6 +13,7 @@ export class TemaComponent implements OnInit {
 
   tema: Tema = new Tema()
   listaTema: Tema[] 
+  alertas: any;
 
   constructor(
 private router: Router,
@@ -38,7 +39,7 @@ private router: Router,
   cadastrar(){
     this.temaService.postTema(this.tema).subscribe((resp: Tema)=>{
       this.tema = resp
-      alert('Tema cadastrado com sucesso! ')
+      this.alertas.showAlertSucces('Tema cadastrado com sucesso! ')
       this.findAllTemas()
       this.tema = new Tema()
     } 
